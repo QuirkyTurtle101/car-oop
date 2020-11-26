@@ -6,13 +6,18 @@ Car volvo = new Car(volvoColor, 100, 400);
 
 void setup(){
   size(800, 600);
-  audi.drawCar();
-  volvo.drawCar();
 }
 
 void draw(){
+  clear();
+  audi.drawCar();
+  volvo.drawCar();
   
+  audi.moveCar(1);
+  volvo.moveCar(0.5);
 }
+
+//CLASSES BELOW HERE
 
 class Car{
   
@@ -34,5 +39,9 @@ class Car{
     rectMode(CENTER);
     fill(colour);
     rect(xPos, yPos, 100, 60);
+  }
+  
+  void moveCar(float speed){
+    xPos += speed;
   }
 }
