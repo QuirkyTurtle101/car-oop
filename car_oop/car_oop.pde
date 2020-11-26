@@ -28,6 +28,7 @@ class Car{
   color colour;
   Wheel wheelFront = new Wheel(30, 20);
   Wheel wheelBack = new Wheel(-30, 20);
+  Headlight headlight = new Headlight(50, -15);
   
   //constructor
   Car(color tempColour, float tempXPos, float tempYPos){
@@ -44,6 +45,7 @@ class Car{
     rect(xPos, yPos, 100, 40);
     wheelFront.drawWheel(xPos, yPos);
     wheelBack.drawWheel(xPos, yPos);
+    headlight.drawHeadlight(xPos, yPos);
   }
   
   void moveCar(float speed){
@@ -67,5 +69,25 @@ class Wheel{
   void drawWheel(float baseX, float baseY){
     fill(0, 0, 0);
     circle(baseX + xPos, baseY + yPos, 25);
+  }
+}
+
+class Headlight{
+  
+  //variables
+  float xPos;
+  float yPos;
+  
+  //constructor
+  Headlight(float tempXPos, float tempYPos){
+    xPos = tempXPos;
+    yPos = tempYPos;
+  }
+  
+  //functionality
+  void drawHeadlight(float baseX, float baseY){
+    fill(0, 0, 0);
+    rectMode(CENTER);
+    rect(baseX + xPos, baseY + yPos, 5, 5);
   }
 }
