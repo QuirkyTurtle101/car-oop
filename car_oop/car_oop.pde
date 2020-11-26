@@ -10,6 +10,7 @@ void setup(){
 
 void draw(){
   clear();
+  background(255, 255, 255);
   audi.drawCar();
   volvo.drawCar();
   
@@ -25,6 +26,8 @@ class Car{
   float xPos;
   float yPos;
   color colour;
+  Wheel wheelFront = new Wheel(30, 20);
+  Wheel wheelBack = new Wheel(-30, 20);
   
   //constructor
   Car(color tempColour, float tempXPos, float tempYPos){
@@ -38,10 +41,31 @@ class Car{
     println("debug " + colour);
     rectMode(CENTER);
     fill(colour);
-    rect(xPos, yPos, 100, 60);
+    rect(xPos, yPos, 100, 40);
+    wheelFront.drawWheel(xPos, yPos);
+    wheelBack.drawWheel(xPos, yPos);
   }
   
   void moveCar(float speed){
     xPos += speed;
+  }
+}
+
+class Wheel{
+  
+  //variables
+  float xPos;
+  float yPos;
+  
+  //constructor
+  Wheel(float tempXPos, float tempYPos){
+    xPos = tempXPos;
+    yPos = tempYPos;
+  }
+  
+  //functionality
+  void drawWheel(float baseX, float baseY){
+    fill(0, 0, 0);
+    circle(baseX + xPos, baseY + yPos, 25);
   }
 }
