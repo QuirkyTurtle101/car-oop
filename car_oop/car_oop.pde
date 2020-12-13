@@ -1,8 +1,12 @@
 color audiColor = color(220, 220, 220);
 color volvoColor = color(255, 0, 0);
+color toyotaColor = color(0, 255, 0);
+color volkswagenColor = color(0, 0, 255);
 
 Car audi = new Car(audiColor, 100, 200);
 Car volvo = new Car(volvoColor, 100, 400);
+Car toyota = new Car(toyotaColor, 150, 300);
+Car volkswagen = new Car(volkswagenColor, 50, 500);
 
 void setup(){
   size(800, 600);
@@ -13,9 +17,13 @@ void draw(){
   background(255, 255, 255);
   audi.drawCar();
   volvo.drawCar();
+  toyota.drawCar();
+  volkswagen.drawCar();
   
-  audi.moveCar(1);
-  volvo.moveCar(0.5);
+  audi.moveCar(1, -0.2);
+  volvo.moveCar(0.5, 0);
+  toyota.moveCar(1.2, 0.5);
+  volkswagen.moveCar(0.75, 0);
 }
 
 //CLASSES BELOW HERE
@@ -48,8 +56,9 @@ class Car{
     headlight.drawHeadlight(xPos, yPos);
   }
   
-  void moveCar(float speed){
-    xPos += speed;
+  void moveCar(float xSpeed, float ySpeed){
+    xPos += xSpeed;
+    yPos += ySpeed;
   }
 }
 
